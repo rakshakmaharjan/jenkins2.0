@@ -8,6 +8,7 @@ pipeline {
             steps{
                 // mvn test
                 sh "mvn test"
+                //slackSend channel: 'testslack', message: 'Job Started' //to send email notification; add plugin in jenkins server as "slack notification" and install "jenkins" integrtion in slack.
             }
         }
         
@@ -40,9 +41,11 @@ pipeline {
         }
         success{
             echo "success"
+            //slackSend channel: 'testslack', message: 'Success'
         }
         failure{
             echo "failure"
+            //slackSend channel: 'testslack', message: 'Job Failed'
         }
     }
 }
